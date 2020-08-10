@@ -1,0 +1,47 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    padding: 0.25rem;
+    text-align: left;
+    border: 1px solid #ccc;
+  }
+  .highlight {
+    background: gray;
+  }
+  
+.messages{
+    color: red
+}
+
+.logout{
+    position: absolute;
+    left: 80%;
+    top: 5%;
+}
+
+.dashboard{
+    position: absolute;
+    left: 70%;
+    top: 5%;
+}
+
+.destinationblock{
+    padding: 15px;
+    border-style: solid;
+    border-radius: 2px;
+    width: 60%;
+    height: 60%;
+    margin: auto;
+}
+
+label{
+    align-self: auto;
+}
+
+.createtr{
+    position: absolute;
+    left: 90%;
+    top: 5%;
+}

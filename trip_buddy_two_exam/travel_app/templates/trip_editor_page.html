@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destination</title>
+</head>
+
+<body>
+    <a href="/logout" class="logout"> Logout </a>
+    <h1> Hello {{loggedinuser.first_name}}! Let's edit your trip! </h1>
+
+    <div class="destinationblock">
+
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <form action="/trips/{{currTrip.id}}/update" method="post">
+            {% csrf_token %}
+            <label for="destination">Destination</label>
+            <input type="text" name="destination" id="destination" value="{{currTrip.destination}}">
+
+            <div>
+                <label for="startdate">Start Date</label>
+                <input type="date" name="startdate" id="startdate" value="{{currTrip.startdate}}">
+                <br>
+                <label for="endate">End Date</label>
+                <input type="date" name="endate" id="endate" value="{{currTrip.endate}}">
+            </div>
+
+            <label for="plan">Plan</label>
+                <textarea name="plan" id="" cols="30" rows="10"> {{currTrip.plan}} </textarea>
+
+                <p><input type="submit" value="Create"></p>
+        </form>
+        <form action="/dashboard" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Cancel">
+        </form>
+    </div>
+</body>
+
+</html>

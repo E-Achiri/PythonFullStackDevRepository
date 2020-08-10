@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destination</title>
+</head>
+
+<body>
+    <a href="/logout" class="logout"> Logout </a>
+    <a href="/dashboard" class="dashboard"> Dashboard </a>
+    <h1> Hello {{loggedinuser.first_name}}! Read about this trip! </h1>
+
+    <p>{{currentTrip.destination}}</p>
+    <div class="destinationblock">
+
+        <p>Start Date: {{currentTrip.startdate}}</p> 
+        <p>End Date: {{currentTrip.endate}}</p> 
+        <p>Created On: {{currentTrip.created_at}}</p>
+        <p>Last Updated: {{currentTrip.updated_at}}</p>
+        <p>Created by: {{tripcreator}}</p>
+
+
+        <p id="lastup">Last Updated: {{showLastUpdated}}</p>
+
+    </div>
+
+    <div class="joiners">
+        <p>People who've joined the trip:</p>
+        {% for attender in attenders %}
+        <p>{{attender.first_name}}</p>
+        {% endfor %}
+    </div>
+
+</body>
+
+</html>

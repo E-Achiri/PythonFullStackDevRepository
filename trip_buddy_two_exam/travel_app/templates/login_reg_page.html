@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <link href="https://fonts.googleapis.com/css?family=Work+Sans:400">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Destination</title>
+    </head>
+<body>
+    <Main>
+        <h1 class="welcome"> Welcome! Let's Travel</h1>
+        {% if messages %}
+            {% if 'notlogged' in all_messages %}
+                <ul class="messages">    
+                {% for message in messages %}    
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endif %}
+        <div class="regis">
+            
+            <h1>Registration</h1>
+            {% if messages %}
+            {% if 'Registration' in all_messages %}
+                <ul class="messages">    
+                {% for message in messages %}    
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% endif %}
+
+
+            <form action="/register" method="post">
+                {% csrf_token %}
+                <label for="fname">First Name</label>
+                <input type="text" name="fname" id="fname">
+
+                <label for="lname">Last Name</label>
+                <input type="text" name="lname" id="fname">
+
+                <label for="birthdate">Date of Birth</label>
+                <input type="date" name="birthdate" id="birthdate">
+
+                <label for="emailreg">Email</label>
+                <input type="text" name="emailreg" id="email">
+
+                <label for="passwreg">Password</label>
+                <input type="password" name="passwreg" id="passwreg">
+
+                <label for="passwregcon">Password</label>
+                <input type="password" name="passwregcon" id="passwregcon">
+
+                <input type="submit" value="Register">
+            </form>
+        </div>
+        <div class="login">
+            {% if messages %}
+            {% if 'Login' in all_messages %}
+                <ul class="messages">    
+                {% for message in messages %}    
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% endif %}
+            <h1> Login </h1>
+            <form action="/login" method="post">
+                {% csrf_token %}
+                <label for="emaillog">Email</label>
+                <input type="email" name="emaillog" id="email">
+
+                <label for="passwlog">Password</label>
+                <input type="password" name="passwlog" id="passwlog">
+                <input type="submit" value="Login">
+            </form>
+        </div>
+    </Main>
+</body>
+</html>
